@@ -6,6 +6,7 @@
         <mapper resource = "OOOMapper.xml"/>  <!--mapper xml 파일의 이름 -->
 
         <mapper resource = "UserSignUpMapper.xml"/>
+        <mapper resource = "UserTodayClassMapper.xml"/>
 
     </mappers>
 </configuration>

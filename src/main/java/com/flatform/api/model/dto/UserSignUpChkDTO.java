@@ -10,7 +10,6 @@ import lombok.Setter;
 @Setter
 //데이터 주고 받을 때 사용하기 위한 객체
 
-public class UserSignUpDTO {
+public class UserSignUpChkDTO {
     private String id;
-
 }

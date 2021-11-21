@@ -1,5 +1,7 @@
 package com.flatform.api.service;
 
+import java.util.List;
+
 public interface UserSignUpService {
-    public String checkId(String targetId);
+    public List checkId(String targetId);
 }
