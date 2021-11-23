@@ -1,34 +1,33 @@
 package com.flatform.api.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.flatform.api.model.dto.UserSignUpDTO;
+import com.flatform.api.service.UserSignUpChkServiceImpl;
 import com.flatform.api.service.UserSignUpService;
 import com.flatform.api.service.UserSignUpServiceImpl;
-import com.google.gson.Gson;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("")
 public class UserSignUpController {
 
     @Autowired
-    UserSignUpServiceImpl userSignUpServiceimpl;
+    UserSignUpServiceImpl userSignUpServiceImpl;
 
-    @ResponseBody
-    @GetMapping(value="/users/member/check/{id}")
-    public List memberCheckById(@PathVariable(name = "id") String requestedId)
+    @PostMapping("/users/member/new")
+    public ArrayList createUserData(@RequestBody UserSignUpDTO userSignUpDTO)
     {
-        List resultByService = userSignUpServiceimpl.checkId(requestedId);
+        userSignUpServiceImpl.createUser(userSignUpDTO);
+        ArrayList result = new ArrayList<>();
+        result.add("Ok");
 
-        return resultByService;
+        return result;
     }
-
-
 
 }

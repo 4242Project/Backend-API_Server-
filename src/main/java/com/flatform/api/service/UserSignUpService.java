@@ -1,7 +1,7 @@
 package com.flatform.api.service;
 
-import java.util.List;
+import com.flatform.api.model.dto.UserSignUpDTO;
 
 public interface UserSignUpService {
-    public List checkId(String targetId);
+    public void createUser(UserSignUpDTO userSignUpDTO);
 }
