@@ -14,6 +14,7 @@
         <mapper resource = "AllClassMemberTakeMapper.xml"/>
         <mapper resource="AllClassMemberHostMapper.xml"/>
         <mapper resource="MemberStampNumMapper.xml"/>
-        <mapper resource="USerSignUpMapper.xml"/>
+        <mapper resource="UserSignUpMapper.xml"/>
+        <mapper resource="EnrollClassMapper.xml"/>
     </mappers>
 </configuration>
