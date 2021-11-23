@@ -7,6 +7,12 @@
 
         <mapper resource = "UserSignUpMapper.xml"/>
         <mapper resource = "UserTodayClassMapper.xml"/>
-
+        <mapper resource = "ClassListMapper.xml"/>
+        <mapper resource = "ClassDetailMapper.xml"/>
+        <mapper resource = "ClassTakerListMapper.xml"/>
+        <mapper resource = "AdMapper.xml"/>
+        <mapper resource = "AllClassMemberTakeMapper.xml"/>
+        <mapper resource="AllClassMemberHostMapper.xml"/>
+        <mapper resource="MemberStampNumMapper.xml"/>
     </mappers>
 </configuration>

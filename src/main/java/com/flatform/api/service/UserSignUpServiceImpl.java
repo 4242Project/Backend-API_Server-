@@ -20,9 +20,6 @@ public class UserSignUpServiceImpl implements UserSignUpService {
     public List checkId(String targetId){
         return userSignUpChkDAO.searchId(targetId);
 
-
-
-
     }
 
 
