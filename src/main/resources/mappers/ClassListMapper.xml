@@ -6,14 +6,44 @@
     <select id="getClassListByCat" parameterType="hashmap" resultType="com.flatform.api.model.dto.ClassListDTO">
         <!--sqlxmlid 메서드 호출 시 실행할 SQL구문 여기에 작성, OOODTO객체를 parameter로 받아 sql 처리 후 OOODTO객체를 반환-->
         <![CDATA[
-        <!-- SQL Quary 작성 필요 -->
+        select
+               class.class_id,
+               class.category_id,
+               class.class_name,
+               member.nickname,
+               member.sai__change_,
+               class.fee,
+               class.start_date,
+               class.introduce_img_root
+        from
+             class,
+             member
+        where
+             class.host_id = member.id
+          and class.category_id = #{cat_name}
+          and class.univ_id = #{univ_id};
         ]]>
     </select>
 
     <select id="getClassListByQuery" parameterType="hashmap" resultType="com.flatform.api.model.dto.ClassListDTO">
         <!--sqlxmlid 메서드 호출 시 실행할 SQL구문 여기에 작성, OOODTO객체를 parameter로 받아 sql 처리 후 OOODTO객체를 반환-->
         <![CDATA[
-        <!-- SQL Quary 작성 필요 -->
+            select
+                   class.class_id,
+                   class.category_id,
+                   class.class_name,
+                   member.nickname,
+                   member.sai__change_,
+                   class.fee,
+                   class.start_date,
+                   class.introduce_img_root
+            from
+                 class,
+                 member
+            where
+                  class.host_id = member.id
+                  and class_name like concat('%', #{Query}, '%')
+                  and class.univ_id = #{univ_id};
         ]]>
     </select>
 </mapper>

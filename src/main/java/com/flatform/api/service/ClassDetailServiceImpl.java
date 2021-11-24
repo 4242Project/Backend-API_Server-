@@ -17,6 +17,7 @@ public class ClassDetailServiceImpl implements ClassDetailService {
     @Override
     public List getClassDetailService(String classId)
     {
+        //String res = classDetailDAO.getClassDetailListById(classId);
         return classDetailDAO.getClassDetailListById(classId);
     }
 }

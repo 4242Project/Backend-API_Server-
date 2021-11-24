@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 public class AllClassMemberTakeDTO {
     private String class_id;
-    private String class_brief;
+    private String class_name;
     private String start_date;
     private boolean sai_chk;
 }

@@ -30,5 +30,5 @@ public class ClassDetailDTO {
     private String class_location;
     private String class_question;
     private String class_change_cancle;
-    private String listener_num;
+    private int listener_num = 0;
 }

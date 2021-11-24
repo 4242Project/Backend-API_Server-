@@ -6,7 +6,7 @@
     <select id="getAdInfo" resultType="com.flatform.api.model.dto.AdDTO">
         <!--sqlxmlid 메서드 호출 시 실행할 SQL구문 여기에 작성, OOODTO객체를 parameter로 받아 sql 처리 후 OOODTO객체를 반환-->
         <![CDATA[
-
+            select * from advertisement;
         ]]>
     </select>
 </mapper>
