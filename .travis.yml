@@ -1,0 +1,16 @@
+language:
+javajdk:
+  - openjdk8
+
+branches:
+  only:
+    - master
+
+chche:
+  directories:
+    - $HOME/.m2
+
+notifications:
+  email:
+    recipients:
+      - mydream11123@naver.com
