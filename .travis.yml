@@ -9,7 +9,11 @@ branches:
 chche:
   directories:
     - $HOME/.m2
-
+before_deploy:
+  - zip -r flatform42-api-service *
+  - mkdir -p deploy
+  - mv flatform42-api-service.zip deploy/flatform42-api-service.zip
+  
 notifications:
   email:
     recipients:
