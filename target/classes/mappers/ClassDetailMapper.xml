@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.flatform.api.model.dao.ClassDetailDAO"> <!-- namespace를 통해 Dao와 연결 -->
+    <select id="getClassDetailListById" parameterType="String" resultType="com.flatform.api.model.dto.ClassDetailDTO">
+        <!--sqlxmlid 메서드 호출 시 실행할 SQL구문 여기에 작성, OOODTO객체를 parameter로 받아 sql 처리 후 OOODTO객체를 반환-->
+        <![CDATA[
+            -- 특정한 클래스의 호스트 학생정보와 클래스 정보
+           select
+	            class.class_id,
+	            class.category_id,
+	            class.class_name,
+	            class.fee,
+	            member.nickname,
+	            member.department,
+	            member.sai__change_,
+	            class.class_place,
+	            class.material,
+	            class.introduce_img_root,
+	            class.limit_number,
+	            class.class_s_time,
+	            class.start_date,
+	            class.class_detail,
+	            class.class_location,
+	            class.class_question,
+	            class.class_change_cancle,
+                (select count(member_id) from signup where class_id = #{classId}) as listener_num
+            from
+	            member, class
+            where
+	            member.id = class.host_id and class.class_id = #{classId};
+        ]]>
+    </select>
+</mapper>
