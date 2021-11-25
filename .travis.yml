@@ -21,7 +21,7 @@ deploy:
     bucket: flatform42-api-deploy # 6-3-3에서 생성한 S3 버킷
     region: ap-northeast-2
     skip_cleanup: true
-    acl: private_read
+    acl: public_read
     wait-until-deployed: true
     on:
       repo: potato-CYH/Hakerton_42Flatform_API_Server #Github 주소
