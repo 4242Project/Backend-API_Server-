@@ -43,5 +43,5 @@ deploy:
     region: ap-northeast-2
     wait-until-deployed: true
     on:
-      repo: jojoldu/springboot-webservice
+      repo: potato-CYH/Hakerton_42Flatform_API_Server
       branch: master
