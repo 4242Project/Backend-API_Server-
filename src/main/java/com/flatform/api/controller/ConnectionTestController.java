@@ -15,6 +15,6 @@ public class ConnectionTestController {
     @ResponseBody
     @GetMapping(value = "/api/test")
     public String apiServerConnectonTest(){
-        return "Server Connecton OK!! Replied by ConnectonTestController Class.";
+        return "Server Connecton OK!! Replied by ConnectonTestController Class. 22-16 하호";
     }
 }
