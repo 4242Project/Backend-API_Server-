@@ -26,6 +26,12 @@
         -->
 
         <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+        <!-- Token Library -->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.9.1</version>
+        </dependency>
         <dependency>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-resources-plugin</artifactId>

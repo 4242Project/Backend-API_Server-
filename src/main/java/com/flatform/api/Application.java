@@ -29,4 +29,5 @@ public class Application {
         return sessionFactory.getObject();
     }
 
+
 }
