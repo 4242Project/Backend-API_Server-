@@ -2,158 +2,152 @@
 
 package com.flatform.api.TokenMgmt;
 
-import com.flatform.api.model.dao.getRefreshTokenDAO;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.ExpiredJwtException;
+//import io.jsonwebtoken.Claims;
+//import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.Jwts;
-import org.springframework.stereotype.Component;
+        import org.springframework.stereotype.Component;
 
 
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.HashMap;
 
-import java.util.Map;
+        import java.util.Map;
 
 
-@Component
+@Component // 클래스를 Bean으로 등록
 public class TokenManagement {
+    final String secretkey = "eb2a459b7918fd3c0c45387eb7b8c7844e71d111227c146ef75347c33a36d90d";        //비밀키 생성
+    final String issue = "42API";                                                                       //발급자 정보
+    Long ACCESS_TOKEN_EXP_TIME = 1000 * 60L * 60L * 4L;                                                 // access token 만료시간 간격 4시간
+    Long REFRESH_TOKEN_EXP_TIME = (1000 * 60L * 60L * 24L)*14L;                                         // refresh token 만료시간 간격 2주
 
-    getRefreshTokenDAO getRefreshTokendao;
 
-    Long ACCESS_TOKEN_EXP_TIME = 100l; // 아직 임시 데이터
-    Long REFRESH_TOKEN_EXP_TIME = 1000l;  // 아직 임시 데이터
+    //@Autowired
+    //getRefreshTokenDAO getRefreshTokendao;
 
-    public String generateAcessToken(String memberId){
 
-        String key = "A";
+    // Acess Token 생성
+    public String generateAccessToken(String userId)
+    {
+        //header 설정
         Map<String, Object> headers = new HashMap<>();
-        headers.put("typ", "JWT");
         headers.put("alg", "HS256");
+        headers.put("typ", "JWT");
 
-        //payload
-        Map<String, Object> payloads = new HashMap<>();
 
-        Long expiredTime = 1000L ;//만료시간
-        Date tokenTime = new Date();
-        tokenTime.setTime(tokenTime.getTime() + expiredTime);
-        //토큰에 들어갈 내용
-        payloads.put("data", memberId);
-        payloads.put("sub", "accesstoken");
-        payloads.put("iat", new Date().getTime());
-        payloads.put("exp", tokenTime); // 만료시간
+        //payload 설정
+        Map<String, Object> payload = new HashMap<>();
 
-        //토큰 생성
-        String createdaccjwt = Jwts.builder()
-                .setHeader(headers)
-                .setClaims(payloads)
-                .signWith(SignatureAlgorithm.HS256, key.getBytes())
-                .compact();
+        Date exp = new Date();                              // access token 의 유효기간 설정
+        exp.setTime(exp.getTime() + ACCESS_TOKEN_EXP_TIME);
 
-        return createdaccjwt;
+        payload.put("iss", issue);                          // 발급자
+        payload.put("sub", "accessToken");                  // 토큰 제목
+        payload.put("aud", userId);                         // 토큰 대상자 : 사용자 아이디
+        payload.put("exp", exp);                            // 토큰 유효기간
+
+
+        // 토큰 생성
+        return Jwts.builder()
+                .setHeader(headers)                                         // 헤더 넣기
+                .setClaims(payload)                                         // payload 넣기
+                .setSubject("accessToken")                                  // 용도
+                .setExpiration(exp)                                         // 만료기한
+                .signWith(SignatureAlgorithm.HS256, secretkey.getBytes())   // HS256, Secret key 서명 작성
+                .compact();                                                 // 토큰 생성
     }
 
-    public String generateRefreshToken(String memberId)
+
+
+
+    // Refresh Token 생성
+    public String generateRefreshToken(String userId)
     {
-        String key = "B";
-        //header
+        //header 설정
         Map<String, Object> headers = new HashMap<>();
-        headers.put("typ", "JWT");
         headers.put("alg", "HS256");
+        headers.put("typ", "JWT");
 
-        //payload
-        Map<String, Object> payloads = new HashMap<>();
 
-        Long expiredTime = 1000L ;//만료시간
-        Date tokenTime = new Date();
-        tokenTime.setTime(tokenTime.getTime() + expiredTime);
-        //토큰에 들어갈 내용
-        payloads.put("data", memberId);
-        payloads.put("sub", "refreshToken");
-        //payloads.put("iat", new Date().getTime());
-        payloads.put("exp", tokenTime); // 만료시간
+        //payload 설정
+        Map<String, Object> payload = new HashMap<>();
 
-        //토큰 생성
-        String createdrefjwt = Jwts.builder()
-                .setHeader(headers)
-                .setClaims(payloads)
-                .signWith(SignatureAlgorithm.HS256, key.getBytes())
-                .compact();
+        Date exp = new Date();                              // refresh token 의 유효기간 설정
+        exp.setTime(exp.getTime() + REFRESH_TOKEN_EXP_TIME);
 
-        return createdrefjwt;
+        payload.put("iss", issue);                          // 발급자
+        payload.put("sub", "refreshToken");                 // 토큰 제목
+        payload.put("aud", userId);                         // 토큰 대상자 : 사용자 아이디
+        payload.put("exp", exp);                            // 토큰 유효기간
+
+
+        // 토큰 생성
+        return Jwts.builder()
+                .setHeader(headers)                                         // 헤더 넣기
+                .setClaims(payload)                                         // payload 넣기
+                .setSubject("refreshToken")                                 // 용도
+                .setExpiration(exp)                                         // 만료기한
+                .signWith(SignatureAlgorithm.HS256, secretkey.getBytes())   // HS256, Secret key 서명 작성
+                .compact();                                                 // 토큰 생성
     }
 
-    //토큰 까기
-    public boolean accTokenDecode(String token)
+
+
+
+    // access token 검증
+    public boolean accessTokenVerify(String accessToken) throws UnsupportedEncodingException
     {
-        boolean result = false;
-        String key = "A";
-        try {
-            //토큰 해독
-            Claims claims = Jwts.parser()
-                    .setSigningKey(key.getBytes("UTF-8"))
-                    .parseClaimsJws(token) // 토큰 검증
+        Map<String, Object> jwtClaimMap;
+        try
+        {
+            // access token String 으로부터 claim 테이블을 추출하여 jwtClaimMap 에 저장
+            jwtClaimMap = Jwts.parser()
+                    .setSigningKey(secretkey.getBytes(StandardCharsets.UTF_8))
+                    .parseClaimsJws(accessToken)
                     .getBody();
 
-            result = true;
-        } catch(ExpiredJwtException e) {// token 만료
-            result= false;
-        } catch (Exception e) { // 그외 에러
-            result = false;
-        }
-        return result;
 
+            //토큰으로부터 정보 추출
+            String issuer = (String)jwtClaimMap.get("iss");                 // access token 발급자 추출
+            String subject = (String)jwtClaimMap.get("sub");                // acess token 용도 추출
+
+
+
+            // 토큰 검증 로직 시작
+            return ((issuer.equals(issue)) && (subject.equals("accessToken")));
+        }
+        // refresh token 만료 및 그외 에러시
+        catch ( Exception e) { return false; }
     }
 
-    public String refTokenDecode(String token)
+
+
+
+    // refresh token 에서
+    public boolean refreshTokenVerify(String refreshToken, String id) throws UnsupportedEncodingException
     {
-        String key = "B";
-        String result = "";
-        try {
-            //토큰 해독
-            Claims claims = Jwts.parser()
-                    .setSigningKey(key.getBytes("UTF-8"))
-                    .parseClaimsJws(token)
+        Map<String, Object> jwtClaimMap;
+        try
+        {
+            // access token String 으로부터 claim 테이블을 추출하여 jwtClaimMap 에 저장
+            jwtClaimMap = Jwts.parser()
+                    .setSigningKey(secretkey.getBytes(StandardCharsets.UTF_8))
+                    .parseClaimsJws(refreshToken)
                     .getBody();
-            result = claims.get("data", String.class);
-        } catch(ExpiredJwtException e) {// token 만료
-            result = "Expired";
-        } catch (Exception e) { // 그외 에러
-            result="error";
-        }
-        return result;
 
-    }
-    //토큰을 검증하고 토큰 종류를 반환
-    public String TokenVerity(String accTknValue, String refTknValue)
-    {
-        //access 토큰만 왔을 때
-        if(accTknValue.length()>0 && refTknValue.length() == 0) {
-            boolean decodedAccTkn = accTokenDecode(accTknValue);
-            if (decodedAccTkn) {
-                return "accTokenOK";
-            } else {
-                return "accTokenFail";
-            }
-        }
-        else if(accTknValue.length()>0 && refTknValue.length() > 0)
-        {
-            String decodedRefTkn = refTokenDecode(refTknValue);
-            String memberID = decodedRefTkn;
-            //db에서 회원 아이디와  리프레시 토큰 값 얻어오기
-            String dbTkn = getRefreshTokendao.getRefTkn(memberID);
 
-            if(refTknValue == dbTkn)
-            {
-                return generateAcessToken(memberID);
-            }
-            else {
-                return "refTokenFail";
-            }
+            //토큰으로부터 정보 추출
+            String issuer = (String)jwtClaimMap.get("iss");                 // access token 발급자 추출
+            String subject = (String)jwtClaimMap.get("sub");                // acess token 용도 추출
+            String aud = (String)jwtClaimMap.get("aud");                    // 토큰 대상사 추출
+
+            // refresh token 검증 로직 시작
+            return ((issuer.equals(issue)) && (subject.equals("refreshToken")));
         }
-        else
-        {
-            return "error";
-        }
+        // refresh token 만료 및 그외 에러시
+        catch (Exception e) { return false;}
     }
 }

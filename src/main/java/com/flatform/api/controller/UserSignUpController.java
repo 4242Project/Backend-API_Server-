@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("")
@@ -21,13 +23,13 @@ public class UserSignUpController {
     UserSignUpServiceImpl userSignUpServiceImpl;
 
     @PostMapping("/users/member/new")
-    public ArrayList createUserData(@RequestBody UserSignUpDTO userSignUpDTO)
+    public Map createUserData(@RequestBody UserSignUpDTO userSignUpDTO)
     {
-        userSignUpServiceImpl.createUser(userSignUpDTO);
-        ArrayList result = new ArrayList<>();
-        result.add("Ok");
+        Map<String, Object> signUpResult = new HashMap<>();
+        signUpResult = userSignUpServiceImpl.createUser(userSignUpDTO);
 
-        return result;
+
+        return signUpResult;
     }
 
 }
