@@ -30,21 +30,21 @@ public class UserSignUpServiceImpl implements UserSignUpService{
         String memberId = userSignUpDTO.getUserId();
         System.out.println(memberId);
         //ID값 정보로부터 ACCESS Token, Refresh Token 발급
-        String accesstkn = tokenManagement.generateAccessToken(memberId);
-        String refreshtkn = tokenManagement.generateRefreshToken(memberId);
+        String newaccesstkn = tokenManagement.generateAccessToken(memberId);
+        String newrefreshtkn = tokenManagement.generateRefreshToken(memberId);
         //userSignUp  DTO 에 발급한 리프레시 트콘 넣기
-        userSignUpDTO.setRefreshToken(refreshtkn);
+        userSignUpDTO.setRefreshToken(newrefreshtkn);
 
         //DB에 회원정보 넣기
         userSignUpDAO.userSignUp(userSignUpDTO);
 
         // 발급한 access token, refresh token 을 Controller에게 return
         Map<String, String> tokenTable = new HashMap<>();
-        tokenTable.put("ACCESS_TOKEN", accesstkn);
-        tokenTable.put("REFRESH_TOKEN", refreshtkn);
+        tokenTable.put("SIGNUP_STATUS", "SUCCESS");
+        tokenTable.put("ACCESS_TOKEN", newaccesstkn);
+        tokenTable.put("REFRESH_TOKEN", newrefreshtkn);
 
         return tokenTable;
-
 
     }
 

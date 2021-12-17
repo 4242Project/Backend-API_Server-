@@ -1,9 +1,7 @@
 package com.flatform.api.controller;
 
-import com.flatform.api.model.dto.UserSignUpDTO;
-import com.flatform.api.service.UserSignUpChkServiceImpl;
-import com.flatform.api.service.UserSignUpService;
-import com.flatform.api.service.UserSignUpServiceImpl;
+import com.flatform.api.model.dto.UserLoginDTO;
+import com.flatform.api.service.UserLoginServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,22 +15,21 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("")
-public class UserSignUpController {
+public class UserLoginController {
 
     @Autowired
-    UserSignUpServiceImpl userSignUpServiceImpl;
+    UserLoginServiceImpl userLoginserviceImpl;
 
-    @PostMapping("/users/member/new")
-    public List createUserData(@RequestBody UserSignUpDTO userSignUpDTO)
+    @PostMapping("/users/member/login")
+    public List userLigin(@RequestBody UserLoginDTO userLoginDTO)
     {
-        Map<String, Object> signUpReturnObj = new HashMap<>();
-        signUpReturnObj = userSignUpServiceImpl.createUser(userSignUpDTO);
+        Map<String, Object> loginReturnObj = new HashMap<>();
+        loginReturnObj = userLoginserviceImpl.verifyUser(userLoginDTO);
 
         List<Object> result = new ArrayList<>();
 
-        result.add(signUpReturnObj);
+        result.add(loginReturnObj);
 
         return result;
     }
-
 }
