@@ -17,7 +17,7 @@ public class EnrollClassController {
     @Autowired
     EnrollClassServiceImpl enrollClassServiceImpl;
 
-    @PostMapping("/class/signup")
+    @PostMapping("/class/enrolling")
     public ArrayList classEnrolling(@RequestBody EnrollClassDTO enrollClassDTO)
     {
         enrollClassServiceImpl.enrollClass(enrollClassDTO);

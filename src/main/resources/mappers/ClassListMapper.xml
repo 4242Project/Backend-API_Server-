@@ -11,7 +11,7 @@
                class.category_id,
                class.class_name,
                member.nickname,
-               member.sai__change_,
+               member.sai_change,
                class.fee,
                class.start_date,
                class.introduce_img_root
@@ -33,7 +33,7 @@
                    class.category_id,
                    class.class_name,
                    member.nickname,
-                   member.sai__change_,
+                   member.sai_change,
                    class.fee,
                    class.start_date,
                    class.introduce_img_root

@@ -24,16 +24,14 @@ public class UserSignUpServiceImpl implements UserSignUpService{
     @Override
     public Map createUser(UserSignUpDTO userSignUpDTO)
     {
-
-
         //회원가입 정보로부터 id 값 추출
-        String memberId = userSignUpDTO.getUserId();
-        System.out.println(memberId);
+        String memberId = userSignUpDTO.getId();
+
         //ID값 정보로부터 ACCESS Token, Refresh Token 발급
         String newaccesstkn = tokenManagement.generateAccessToken(memberId);
         String newrefreshtkn = tokenManagement.generateRefreshToken(memberId);
         //userSignUp  DTO 에 발급한 리프레시 트콘 넣기
-        userSignUpDTO.setRefreshToken(newrefreshtkn);
+        userSignUpDTO.setRefreshtoken(newrefreshtkn);
 
         //DB에 회원정보 넣기
         userSignUpDAO.userSignUp(userSignUpDTO);

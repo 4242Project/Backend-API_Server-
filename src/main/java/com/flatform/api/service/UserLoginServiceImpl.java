@@ -22,8 +22,8 @@ public class UserLoginServiceImpl implements UserLoginService {
     @Override
     public Map verifyUser(UserLoginDTO userLoginDTO) {
         // login DTO 로부터 ID , PW 추출
-        String userIdFromClient = userLoginDTO.getMemberId();
-        String userPWFromClient = userLoginDTO.getMemberPW();
+        String userIdFromClient = userLoginDTO.getId();
+        String userPWFromClient = userLoginDTO.getPw();
 
         // DB 로부터 ID, PW 추출
         String userIdFromDB = userLoginDAO.verifyUseridDB(userIdFromClient);

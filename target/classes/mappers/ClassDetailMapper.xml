@@ -14,7 +14,7 @@
 	            class.fee,
 	            member.nickname,
 	            member.department,
-	            member.sai__change_,
+	            member.sai_change,
 	            class.class_place,
 	            class.material,
 	            class.introduce_img_root,

@@ -6,5 +6,5 @@ import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 public interface LookupUserRefreshTokenService {
-    public List getNewAccessToken(String refreshTokenDTO, String memberId) throws UnsupportedEncodingException;
+    public List getNewAccessToken(String refreshTokenValue, String userId) throws UnsupportedEncodingException;
 }

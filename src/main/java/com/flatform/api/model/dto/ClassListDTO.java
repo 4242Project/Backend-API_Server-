@@ -16,7 +16,7 @@ public class ClassListDTO {
     private String category_id;
     private String class_name;
     private String nickname;
-    private int sai__change_;
+    private int sai_change;
     private int fee;
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date start_date;

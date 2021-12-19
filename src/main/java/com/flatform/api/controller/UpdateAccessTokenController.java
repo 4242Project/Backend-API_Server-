@@ -21,8 +21,7 @@ public class UpdateAccessTokenController {
     public List updateAccessToken(@RequestBody RefreshTokenDTO refreshTokenDTO, @PathVariable(name="userid") String userId) throws UnsupportedEncodingException {
         // 리프레시 토큰을 받아서 서비스 호출
         // 서비스는 갱신된 엑세스 토큰 반환
-        System.out.println(refreshTokenDTO.getTokenValue());
-        return lookupUserRefreshTokenService.getNewAccessToken(refreshTokenDTO.getTokenValue(), userId);
+        return lookupUserRefreshTokenService.getNewAccessToken(refreshTokenDTO.getRefreshTokenValue(), userId);
 
 
     }

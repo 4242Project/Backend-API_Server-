@@ -19,21 +19,8 @@ public class UserSignUpDTO {
     private int age;
     private String phone;
     private String department;
-    public String refreshtoken;
-    public String getUserId()
-    {
-        return id;
-    }
-    public void setRefreshToken(String refTkn)
-    {
-        this.refreshtoken = refTkn;
-    }
+    private String refreshtoken;
 
-    // refresh token default값 설정
-    public UserSignUpDTO()
-    {
-        this.refreshtoken = "REF_TKN_NULL";
-    }
 
 
 

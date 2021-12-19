@@ -11,14 +11,5 @@ public class UserLoginDTO {
     private String id;
     private String pw;
 
-    public String getMemberPW()
-    {
-        return pw;
-    }
-
-    public String getMemberId()
-    {
-        return id;
-    }
 }
 

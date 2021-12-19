@@ -19,7 +19,7 @@ public class ClassDetailDTO {
     private int fee;
     private String nickname;
     private String department;
-    private int sai__change_;
+    private int sai_change;
     private String class_place;
     private String material;
     private String introduce_img_root;
