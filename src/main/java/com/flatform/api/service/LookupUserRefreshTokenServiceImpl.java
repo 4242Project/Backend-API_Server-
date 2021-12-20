@@ -32,8 +32,11 @@ public class LookupUserRefreshTokenServiceImpl implements LookupUserRefreshToken
 
         if(tokenManagement.refreshTokenVerify(refreshTokenFromClient, userId))
         {
-            if(refreshTokenFromClient == refreshTokenFromDB)
+            System.out.println(refreshTokenFromDB);
+            System.out.println(refreshTokenFromClient);
+            if(refreshTokenFromClient.equals(refreshTokenFromDB))
             {
+                System.out.println(1);
                 newAccessToken = tokenManagement.generateAccessToken(userId);
             }
             else

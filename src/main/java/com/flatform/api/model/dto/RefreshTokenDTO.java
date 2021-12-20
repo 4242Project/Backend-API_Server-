@@ -9,5 +9,6 @@ import lombok.Setter;
 @Setter
 public class RefreshTokenDTO {
     private String refreshTokenValue;
+    private String userID;
 
 }

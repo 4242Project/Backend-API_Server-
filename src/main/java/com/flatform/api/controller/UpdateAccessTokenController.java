@@ -17,11 +17,11 @@ public class UpdateAccessTokenController {
     @Autowired
     LookupUserRefreshTokenServiceImpl lookupUserRefreshTokenService;
 
-    @PostMapping("/auth/token/update/{userid}")
-    public List updateAccessToken(@RequestBody RefreshTokenDTO refreshTokenDTO, @PathVariable(name="userid") String userId) throws UnsupportedEncodingException {
+    @PostMapping("/auth/token/update")
+    public List updateAccessToken(@RequestBody RefreshTokenDTO refreshTokenDTO) throws UnsupportedEncodingException {
         // 리프레시 토큰을 받아서 서비스 호출
         // 서비스는 갱신된 엑세스 토큰 반환
-        return lookupUserRefreshTokenService.getNewAccessToken(refreshTokenDTO.getRefreshTokenValue(), userId);
+        return lookupUserRefreshTokenService.getNewAccessToken(refreshTokenDTO.getRefreshTokenValue(), refreshTokenDTO.getUserID());
 
 
     }
