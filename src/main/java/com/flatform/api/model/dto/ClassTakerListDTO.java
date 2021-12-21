@@ -10,9 +10,6 @@ import lombok.Setter;
 public class ClassTakerListDTO {
     private String id;
     private String nickname;
-    private String Department;
-    private String stamp_top_1;
-    private String stamp_top_2;
-    private String stamp_top_3;
+    private String department;
 
 }

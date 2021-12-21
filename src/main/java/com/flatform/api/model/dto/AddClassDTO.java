@@ -13,7 +13,7 @@ import java.util.Date;
 
 //class 개설 및 수정시 사용하는 DTO
 public class AddClassDTO {
-    private String class_id = "C0000";
+    private String class_id;
     private String host_id;
     private String univ_id;
     private String introduce_img_root;

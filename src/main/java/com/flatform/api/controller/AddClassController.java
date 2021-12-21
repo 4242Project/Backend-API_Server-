@@ -10,16 +10,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping
+@RequestMapping("")
 public class AddClassController {
 
     @Autowired
-    AddClassServiceImpl addClassService;
+    AddClassServiceImpl addClassServiceimpl;
 
     @PostMapping("/class/new")
     public String addClassInfo(@RequestBody AddClassDTO addClassDTO)
     {
-        String result = addClassService.addNewClass(addClassDTO);
+        String result = addClassServiceimpl.addNewClass(addClassDTO);
         return result;
     }
 

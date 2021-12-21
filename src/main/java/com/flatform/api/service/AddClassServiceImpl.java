@@ -7,10 +7,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.Random;
 
-@Service("AddClassService")
+@Service("AddclassService")
 public class AddClassServiceImpl implements AddclassService{
     @Autowired
     AddClassDAO addClassDAO;
+
+    @Override
     public String addNewClass(AddClassDTO addClassDTO)
     {
         // 새로운 클래스ID 생성
