@@ -1,7 +1,7 @@
 package com.flatform.api.controller;
 
 import com.flatform.api.model.dto.AddClassDTO;
-import com.flatform.api.model.dto.ClassDetailDTO;
+
 import com.flatform.api.service.AddClassServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,8 +19,8 @@ public class AddClassController {
     @PostMapping("/class/new")
     public String addClassInfo(@RequestBody AddClassDTO addClassDTO)
     {
-        String result = addClassServiceimpl.addNewClass(addClassDTO);
-        return result;
+        return addClassServiceimpl.addNewClass(addClassDTO);
+
     }
 
 }

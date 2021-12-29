@@ -1,6 +1,7 @@
 package com.flatform.api.service;
 
 import com.flatform.api.model.dao.UserClassDAO;
+import com.flatform.api.model.dto.UserClassDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +15,9 @@ public class UserClassServiceImpl implements UserClassService {
     UserClassDAO userClassDAO;
 
     @Override
-    public List getUserTodayClass(String userId, int date){
+    public List<UserClassDTO> getUserTodayClass(String userId, int date){
 
-        HashMap<String, Object> parammap = new HashMap<String, Object>(); //다중 파라미터를 받기위한 코드
+        HashMap<String, Object> parammap = new HashMap<>(); //다중 파라미터를 받기위한 코드
         parammap.put("userId", userId);
         parammap.put("date", date);
         System.out.println(parammap);

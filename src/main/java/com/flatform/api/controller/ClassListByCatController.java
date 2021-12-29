@@ -1,5 +1,6 @@
 package com.flatform.api.controller;
 
+import com.flatform.api.model.dto.ClassListDTO;
 import com.flatform.api.service.ClassListServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,8 +16,8 @@ public class ClassListByCatController {
 
     @ResponseBody
     @GetMapping(value="/class/list/{univ_id}/{category_id}")
-    public List getClassesListByCat(@PathVariable(name="univ_id") String univ_id,
-                                    @PathVariable(name="category_id") String cat_id)
+    public List<ClassListDTO> getClassesListByCat(@PathVariable(name="univ_id") String univ_id,
+                                                  @PathVariable(name="category_id") String cat_id)
     {
         return classListServiceImpl.getClassListByCat(univ_id, cat_id);
     }

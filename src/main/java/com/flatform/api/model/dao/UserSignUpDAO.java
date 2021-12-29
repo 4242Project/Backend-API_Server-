@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 @Mapper
 @Repository
 public interface UserSignUpDAO {
-    public void userSignUp(UserSignUpDTO userSignUpDTO);
+    void userSignUp(UserSignUpDTO userSignUpDTO);
 
 }

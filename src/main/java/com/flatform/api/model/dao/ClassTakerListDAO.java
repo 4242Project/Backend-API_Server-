@@ -7,5 +7,5 @@ import java.util.List;
 
 @Mapper
 public interface ClassTakerListDAO {
-    public List<ClassTakerListDTO> getClassTakerListDB(String class_id);
+    List<ClassTakerListDTO> getClassTakerListDB(String class_id);
 }

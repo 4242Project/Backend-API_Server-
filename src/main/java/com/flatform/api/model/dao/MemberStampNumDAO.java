@@ -7,5 +7,5 @@ import java.util.List;
 
 @Mapper
 public interface MemberStampNumDAO {
-    public List<MemberStampNumDTO> getMemberStampNum(String member_id);
+    List<MemberStampNumDTO> getMemberStampNum(String member_id);
 }

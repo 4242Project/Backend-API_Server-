@@ -1,5 +1,6 @@
 package com.flatform.api.controller;
 
+import com.flatform.api.model.dto.AllClassMemberHostDTO;
 import com.flatform.api.service.AllClassMemberHostServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +16,7 @@ public class AllClassMemberHostController
 
     @ResponseBody
     @GetMapping(value = "/class/open/{member_id}")
-    public List getAllClssesMemberHost(@PathVariable (name="member_id")String member_id)
+    public List<AllClassMemberHostDTO> getAllClssesMemberHost(@PathVariable (name="member_id")String member_id)
     {
         return allClassMemberHostServiceImpl.getAllClassMemberHost(member_id);
     }

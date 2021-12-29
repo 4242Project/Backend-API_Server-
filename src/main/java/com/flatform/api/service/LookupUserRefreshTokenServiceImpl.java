@@ -5,8 +5,6 @@ import com.flatform.api.model.dao.GetRefreshTokenDAO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,36 +19,32 @@ public class LookupUserRefreshTokenServiceImpl implements LookupUserRefreshToken
     @Autowired
     TokenManagement tokenManagement;
     @Override
-    public List getNewAccessToken(String refreshTokenValue, String userId) throws UnsupportedEncodingException {
-        String refreshTokenFromClient = refreshTokenValue;
-        String newAccessToken = "";
+    public List<String> getNewAccessToken(String refreshTokenValue, String userId) {
         // DB에서 리프레시 토큰 가져오기
         String refreshTokenFromDB = getRefreshTokenDAO.getRefTkn(userId);
 
         //리프레시 토큰 검증값이 참이면 리프레시 토큰 일치여부 확인 후 엑세스 토큰 발급
         //검증값 false면 에러메세지 반환
+        ArrayList<String> result = new ArrayList<>();
 
-        if(tokenManagement.refreshTokenVerify(refreshTokenFromClient, userId))
+        if(tokenManagement.refreshTokenVerify(refreshTokenValue))
         {
-            System.out.println(refreshTokenFromDB);
-            System.out.println(refreshTokenFromClient);
-            if(refreshTokenFromClient.equals(refreshTokenFromDB))
+            String newAccessToken;
+            if(refreshTokenValue.equals(refreshTokenFromDB))
             {
-                System.out.println(1);
                 newAccessToken = tokenManagement.generateAccessToken(userId);
             }
             else
             {
                 newAccessToken = "refresh Token unmatch";
             }
+            result.add(newAccessToken);
         }
         else
         {
-            newAccessToken = "refresh Token expired";
+            String newAccessToken = "refresh Token expired";
+            result.add(newAccessToken);
         }
-
-        ArrayList<String> result = new ArrayList<>();
-        result.add(newAccessToken);
         return result;
     }
 }

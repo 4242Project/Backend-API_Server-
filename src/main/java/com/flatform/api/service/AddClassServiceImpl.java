@@ -5,8 +5,6 @@ import com.flatform.api.model.dto.AddClassDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Random;
-
 @Service("AddclassService")
 public class AddClassServiceImpl implements AddclassService{
     @Autowired

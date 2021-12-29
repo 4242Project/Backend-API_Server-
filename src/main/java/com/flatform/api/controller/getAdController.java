@@ -1,6 +1,7 @@
 package com.flatform.api.controller;
 
 import com.flatform.api.model.dao.AdDAO;
+import com.flatform.api.model.dto.AdDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +19,7 @@ public class getAdController {
 
     @ResponseBody
     @GetMapping(value = "/ad/lists")
-    public List getAdLists()
+    public List<AdDTO> getAdLists()
     {
         return adDAO.getAdInfo();
     }

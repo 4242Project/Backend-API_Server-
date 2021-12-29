@@ -8,7 +8,7 @@
         <![CDATA[
             select
                    class.class_id,
-                   category.category_name,
+                   category.category_id,
                    class.class_name,
                    class.class_s_time,
                    class.class_e_time

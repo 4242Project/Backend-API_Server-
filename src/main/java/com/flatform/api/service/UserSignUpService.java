@@ -5,5 +5,5 @@ import com.flatform.api.model.dto.UserSignUpDTO;
 import java.util.Map;
 
 public interface UserSignUpService {
-    public Map createUser(UserSignUpDTO userSignUpDTO);
+    Map<String, String> createUser(UserSignUpDTO userSignUpDTO);
 }

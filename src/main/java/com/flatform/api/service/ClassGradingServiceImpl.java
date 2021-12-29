@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Service("ClassGradingService")
@@ -28,7 +27,7 @@ public class ClassGradingServiceImpl implements ClassGradingService{
         daoParameter.put("saiVal", gradeVal);
 
         System.out.println(daoParameter);
-        Boolean gradingResult = classGradingDAO.updateClassGrade(daoParameter);
+        boolean gradingResult = classGradingDAO.updateClassGrade(daoParameter);
 
 
         //gradingResult 값이 참이면 정상등록 메세지 반환

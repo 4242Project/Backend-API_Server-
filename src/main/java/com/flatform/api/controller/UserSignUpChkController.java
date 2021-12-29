@@ -15,11 +15,11 @@ public class UserSignUpChkController {
 
     @ResponseBody
     @GetMapping(value="/users/member/check/{id}")
-    public List memberCheckById(@PathVariable(name = "id") String requestedId)
+    public List<Object> memberCheckById(@PathVariable(name = "id") String requestedId)
     {
-        List resultByService = userSignUpchkServiceimpl.checkId(requestedId);
+        return userSignUpchkServiceimpl.checkId(requestedId);
 
-        return resultByService;
+
     }
 
 

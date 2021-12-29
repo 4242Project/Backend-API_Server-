@@ -17,6 +17,7 @@ public class UserSignUpDTO {
     private String email;
     private String nickname;
     private int age;
+    private String profile_img_root;
     private String phone;
     private String department;
     private String refreshtoken;

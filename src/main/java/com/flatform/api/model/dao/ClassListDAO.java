@@ -8,6 +8,6 @@ import java.util.List;
 
 @Mapper
 public interface ClassListDAO {
-    public List<ClassListDTO> getClassListByCat(HashMap<String, Object> map);
-    public List<ClassListDTO> getClassListByQuery(HashMap<String, Object>map);
+    List<ClassListDTO> getClassListByCat(HashMap<String, Object> map);
+    List<ClassListDTO> getClassListByQuery(HashMap<String, Object>map);
 }

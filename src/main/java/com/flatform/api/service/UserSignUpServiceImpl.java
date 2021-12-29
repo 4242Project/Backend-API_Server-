@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Service("UserSignUpService")
@@ -22,7 +21,7 @@ public class UserSignUpServiceImpl implements UserSignUpService{
     TokenManagement tokenManagement;
 
     @Override
-    public Map createUser(UserSignUpDTO userSignUpDTO)
+    public Map<String, String> createUser(UserSignUpDTO userSignUpDTO)
     {
         //회원가입 정보로부터 id 값 추출
         String memberId = userSignUpDTO.getId();

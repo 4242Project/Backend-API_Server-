@@ -5,5 +5,5 @@ import com.flatform.api.model.dto.UserLoginDTO;
 import java.util.Map;
 
 public interface UserLoginService {
-    public Map verifyUser(UserLoginDTO userLoginDTO);
+    Map<String, Object> verifyUser(UserLoginDTO userLoginDTO);
 }

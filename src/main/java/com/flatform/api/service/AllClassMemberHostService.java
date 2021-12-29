@@ -1,7 +1,9 @@
 package com.flatform.api.service;
 
+import com.flatform.api.model.dto.AllClassMemberHostDTO;
+
 import java.util.List;
 
 public interface AllClassMemberHostService {
-    public List getAllClassMemberHost(String member_id);
+    List<AllClassMemberHostDTO> getAllClassMemberHost(String member_id);
 }

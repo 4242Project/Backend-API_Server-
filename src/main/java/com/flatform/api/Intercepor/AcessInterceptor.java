@@ -24,9 +24,10 @@ public class AcessInterceptor implements HandlerInterceptor {
         String accTokenStr = request.getHeader(ACCESS_HEADER_AUTH);
         if(accTokenStr != null)                                         // access token 요청이 들어왔을 때
         {
-
             if(tokenManagement.accessTokenVerify(accTokenStr))          // access token 검증 완료 시 컨트롤러 호출 가능
-            { return true; }
+            {
+                return true;
+            }
         }
         response.sendError(403, "Access Denied");                  // access token 검증 실패 시 403 error 반환
 

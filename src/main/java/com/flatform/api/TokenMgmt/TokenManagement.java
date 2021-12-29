@@ -1,15 +1,12 @@
-//전체적 정리 필요
 
 package com.flatform.api.TokenMgmt;
 
-//import io.jsonwebtoken.Claims;
-//import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.Jwts;
-        import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Component;
 
 
-import java.io.UnsupportedEncodingException;
+
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.HashMap;
@@ -23,10 +20,6 @@ public class TokenManagement {
     final String issue = "42API";                                                                       //발급자 정보
     Long ACCESS_TOKEN_EXP_TIME = 1000 * 60L * 60L * 4L;                                                 // access token 만료시간 간격 4시간
     Long REFRESH_TOKEN_EXP_TIME = (1000 * 60L * 60L * 24L)*14L;                                         // refresh token 만료시간 간격 2주
-
-
-    //@Autowired
-    //getRefreshTokenDAO getRefreshTokendao;
 
 
     // Acess Token 생성
@@ -98,8 +91,7 @@ public class TokenManagement {
 
 
     // access token 검증
-    public boolean accessTokenVerify(String accessToken) throws UnsupportedEncodingException
-    {
+    public boolean accessTokenVerify(String accessToken) {
         Map<String, Object> jwtClaimMap;
         try
         {
@@ -127,8 +119,7 @@ public class TokenManagement {
 
 
     // refresh token 에서
-    public boolean refreshTokenVerify(String refreshToken, String id) throws UnsupportedEncodingException
-    {
+    public boolean refreshTokenVerify(String refreshToken) {
         Map<String, Object> jwtClaimMap;
         try
         {
@@ -142,7 +133,6 @@ public class TokenManagement {
             //토큰으로부터 정보 추출
             String issuer = (String)jwtClaimMap.get("iss");                 // access token 발급자 추출
             String subject = (String)jwtClaimMap.get("sub");                // acess token 용도 추출
-            String aud = (String)jwtClaimMap.get("aud");                    // 토큰 대상사 추출
 
             // refresh token 검증 로직 시작
             return ((issuer.equals(issue)) && (subject.equals("refreshToken")));

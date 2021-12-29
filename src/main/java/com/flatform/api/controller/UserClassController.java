@@ -1,5 +1,6 @@
 package com.flatform.api.controller;
 
+import com.flatform.api.model.dto.UserClassDTO;
 import com.flatform.api.service.UserClassServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,7 @@ public class UserClassController {
 
     @ResponseBody
     @GetMapping(value="/class/member/today/{id}")
-    public List getTodayClasses(@PathVariable(name = "id") String requestedId){
+    public List<UserClassDTO> getTodayClasses(@PathVariable(name = "id") String requestedId){
         Calendar calendar = Calendar.getInstance();
         System.out.println(calendar.get(Calendar.DAY_OF_WEEK));
         return userClassServiceimpl.getUserTodayClass(requestedId, calendar.get(Calendar.DAY_OF_WEEK));

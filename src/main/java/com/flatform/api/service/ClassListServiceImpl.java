@@ -1,6 +1,7 @@
 package com.flatform.api.service;
 
 import com.flatform.api.model.dao.ClassListDAO;
+import com.flatform.api.model.dto.ClassListDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +15,9 @@ public class ClassListServiceImpl implements ClassListService {
     ClassListDAO classListDAO;
 
     @Override
-    public List getClassListByCat(String univ_id, String cat_name){
+    public List<ClassListDTO> getClassListByCat(String univ_id, String cat_name){
 
-        HashMap<String, Object> parammap = new HashMap<String, Object>();
+        HashMap<String, Object> parammap = new HashMap<>();
         parammap.put("univ_id", univ_id);
         parammap.put("cat_name", cat_name);
 
@@ -24,7 +25,7 @@ public class ClassListServiceImpl implements ClassListService {
     }
 
     @Override
-    public List getClassListByQuery(String univ_id, String Query){
+    public List<ClassListDTO> getClassListByQuery(String univ_id, String Query){
 
         HashMap<String, Object> parammap = new HashMap<>();
         parammap.put("univ_id", univ_id);

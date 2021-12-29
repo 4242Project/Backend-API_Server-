@@ -18,10 +18,10 @@ public class EnrollClassController {
     EnrollClassServiceImpl enrollClassServiceImpl;
 
     @PostMapping("/class/enrolling")
-    public ArrayList classEnrolling(@RequestBody EnrollClassDTO enrollClassDTO)
+    public ArrayList<String> classEnrolling(@RequestBody EnrollClassDTO enrollClassDTO)
     {
         enrollClassServiceImpl.enrollClass(enrollClassDTO);
-        ArrayList result = new ArrayList<>();
+        ArrayList<String> result = new ArrayList<>();
         result.add("OK");
 
         return result;

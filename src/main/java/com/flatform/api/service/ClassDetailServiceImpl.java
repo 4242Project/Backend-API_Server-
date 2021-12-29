@@ -1,8 +1,7 @@
 package com.flatform.api.service;
 
 import com.flatform.api.model.dao.ClassDetailDAO;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
+import com.flatform.api.model.dto.ClassDetailDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +14,7 @@ public class ClassDetailServiceImpl implements ClassDetailService {
     ClassDetailDAO classDetailDAO;
 
     @Override
-    public List getClassDetailService(String classId)
+    public List<ClassDetailDTO> getClassDetailService(String classId)
     {
         //String res = classDetailDAO.getClassDetailListById(classId);
         return classDetailDAO.getClassDetailListById(classId);

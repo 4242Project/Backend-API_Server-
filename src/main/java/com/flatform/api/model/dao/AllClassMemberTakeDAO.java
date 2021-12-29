@@ -8,5 +8,5 @@ import java.util.List;
 @Mapper
 public interface AllClassMemberTakeDAO
 {
-    public List<AllClassMemberTakeDTO> getAllClassMemberTake(String member_id);
+    List<AllClassMemberTakeDTO> getAllClassMemberTake(String member_id);
 }

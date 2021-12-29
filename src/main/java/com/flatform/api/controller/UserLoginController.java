@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,9 +20,9 @@ public class UserLoginController {
     UserLoginServiceImpl userLoginserviceImpl;
 
     @PostMapping("/users/member/login")
-    public List userLigin(@RequestBody UserLoginDTO userLoginDTO)
+    public List<Object> userLigin(@RequestBody UserLoginDTO userLoginDTO)
     {
-        Map<String, Object> loginReturnObj = new HashMap<>();
+        Map<String, Object> loginReturnObj;
         loginReturnObj = userLoginserviceImpl.verifyUser(userLoginDTO);
 
         List<Object> result = new ArrayList<>();

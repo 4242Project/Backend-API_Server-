@@ -6,8 +6,8 @@
     <insert id="userSignUp" parameterType="com.flatform.api.model.dto.UserSignUpDTO">
         <!--sqlxmlid 메서드 호출 시 실행할 SQL구문 여기에 작성, OOODTO객체를 parameter로 받아 sql 처리 후 OOODTO객체를 반환-->
         <![CDATA[
-            insert into member(id, pw, univ_id, name, email, nickname, age, phone, department, refreshtoken)
-            values(#{id}, #{pw},#{univ_id},#{name},#{email},#{nickname},#{age},#{phone},#{department}, #{refreshtoken});
+            insert into member(id, pw, univ_id, name, email, nickname, age, profile_img_root, phone, department, refreshtoken)
+            values(#{id}, #{pw},#{univ_id},#{name},#{email},#{nickname},#{age},#{profile_img_root},#{phone},#{department}, #{refreshtoken});
         ]]>
 
     </insert>

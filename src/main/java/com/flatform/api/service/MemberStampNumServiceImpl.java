@@ -1,6 +1,7 @@
 package com.flatform.api.service;
 
 import com.flatform.api.model.dao.MemberStampNumDAO;
+import com.flatform.api.model.dto.MemberStampNumDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +14,7 @@ public class MemberStampNumServiceImpl implements MemberStampNumService{
     MemberStampNumDAO memberStampNumDAO;
 
     @Override
-    public List getMemberStampNumber(String member_id)
+    public List<MemberStampNumDTO> getMemberStampNumber(String member_id)
     {
         return memberStampNumDAO.getMemberStampNum(member_id);
     }

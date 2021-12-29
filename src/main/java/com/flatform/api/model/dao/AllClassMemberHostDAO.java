@@ -7,5 +7,5 @@ import java.util.List;
 
 @Mapper
 public interface AllClassMemberHostDAO {
-    public List<AllClassMemberHostDTO> getAllClassMemberHost(String member_id);
+    List<AllClassMemberHostDTO> getAllClassMemberHost(String member_id);
 }

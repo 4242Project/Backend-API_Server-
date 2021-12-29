@@ -7,5 +7,5 @@ import java.util.List;
 
 @Mapper
 public interface AdDAO {
-    public List<AdDTO> getAdInfo();
+    List<AdDTO> getAdInfo();
 }

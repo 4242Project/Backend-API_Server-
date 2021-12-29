@@ -20,10 +20,4 @@ public class ClassTakerListServiceImpl implements ClassTakerListService {
         return classTakerListDAO.getClassTakerListDB(class_id);
 
     }
-    /*
-    @Override
-    public stampTop3DTO getClasstakerstamp(String member_id)
-    {}
-    */
-
 }

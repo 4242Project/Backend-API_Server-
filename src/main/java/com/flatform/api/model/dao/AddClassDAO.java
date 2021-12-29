@@ -5,6 +5,6 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface AddClassDAO {
-    public boolean addNewClass(AddClassDTO addClassDTO);
-    public String getClassIdStd();
+    boolean addNewClass(AddClassDTO addClassDTO);
+    String getClassIdStd();
 }

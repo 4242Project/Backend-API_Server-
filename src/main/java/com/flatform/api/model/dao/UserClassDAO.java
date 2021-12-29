@@ -8,5 +8,5 @@ import java.util.List;
 
 @Mapper
 public interface UserClassDAO {
-    public List<UserClassDTO> getTodayClass(HashMap<String, Object> map);
+    List<UserClassDTO> getTodayClass(HashMap<String, Object> map);
 }
