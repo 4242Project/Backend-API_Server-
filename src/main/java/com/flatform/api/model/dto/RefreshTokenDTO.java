@@ -7,8 +7,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class RefreshTokenDTO {
+public class RefreshTokenDTO
+{
     private String refreshTokenValue;
     private String userID;
-
 }

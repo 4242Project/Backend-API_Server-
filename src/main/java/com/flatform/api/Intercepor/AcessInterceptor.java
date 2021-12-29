@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 @Component // 클래스를 Bean으로 등록
 public class AcessInterceptor implements HandlerInterceptor {
 
-    private static final String ACCESS_HEADER_AUTH = "Acess-Token";
+    private static final String ACCESS_HEADER_AUTH = "Access-Token";
 
     @Autowired
     private TokenManagement tokenManagement;
