@@ -1,26 +1,24 @@
 
-package com.flatform.api.TokenMgmt;
+package com.flatform.api.security;
 
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.Jwts;
 import org.springframework.stereotype.Component;
-
-
-
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.HashMap;
-
-        import java.util.Map;
-
+import java.util.Map;
 
 @Component // 클래스를 Bean으로 등록
 public class TokenManagement {
-    final String secretkey = "eb2a459b7918fd3c0c45387eb7b8c7844e71d111227c146ef75347c33a36d90d";        //비밀키 생성
-    final String issue = "42API";                                                                       //발급자 정보
-    Long ACCESS_TOKEN_EXP_TIME = 1000 * 60L * 60L * 4L;                                                 // access token 만료시간 간격 4시간
-    Long REFRESH_TOKEN_EXP_TIME = (1000 * 60L * 60L * 24L)*14L;                                         // refresh token 만료시간 간격 2주
-
+    //비밀키 생성
+    final String secretkey = "eb2a459b7918fd3c0c45387eb7b8c7844e71d111227c146ef75347c33a36d90d";
+    //발급자 정보
+    final String issue = "42API";
+    // access token 만료시간 간격 4시간
+    Long ACCESS_TOKEN_EXP_TIME = 1000 * 60L * 60L * 4L;
+    // refresh token 만료시간 간격 2주
+    Long REFRESH_TOKEN_EXP_TIME = (1000 * 60L * 60L * 24L)*14L;
 
     // Acess Token 생성
     public String generateAccessToken(String userId)
@@ -30,17 +28,16 @@ public class TokenManagement {
         headers.put("alg", "HS256");
         headers.put("typ", "JWT");
 
-
         //payload 설정
         Map<String, Object> payload = new HashMap<>();
 
-        Date exp = new Date();                              // access token 의 유효기간 설정
+        Date exp = new Date();                                              // access token 의 유효기간 설정
         exp.setTime(exp.getTime() + ACCESS_TOKEN_EXP_TIME);
 
-        payload.put("iss", issue);                          // 발급자
-        payload.put("sub", "accessToken");                  // 토큰 제목
-        payload.put("aud", userId);                         // 토큰 대상자 : 사용자 아이디
-        payload.put("exp", exp);                            // 토큰 유효기간
+        payload.put("iss", issue);                                          // 발급자
+        payload.put("sub", "accessToken");                                  // 토큰 제목
+        payload.put("aud", userId);                                         // 토큰 대상자 : 사용자 아이디
+        payload.put("exp", exp);                                            // 토큰 유효기간
 
 
         // 토큰 생성
@@ -68,13 +65,13 @@ public class TokenManagement {
         //payload 설정
         Map<String, Object> payload = new HashMap<>();
 
-        Date exp = new Date();                              // refresh token 의 유효기간 설정
+        Date exp = new Date();                                              // refresh token 의 유효기간 설정
         exp.setTime(exp.getTime() + REFRESH_TOKEN_EXP_TIME);
 
-        payload.put("iss", issue);                          // 발급자
-        payload.put("sub", "refreshToken");                 // 토큰 제목
-        payload.put("aud", userId);                         // 토큰 대상자 : 사용자 아이디
-        payload.put("exp", exp);                            // 토큰 유효기간
+        payload.put("iss", issue);                                          // 발급자
+        payload.put("sub", "refreshToken");                                 // 토큰 제목
+        payload.put("aud", userId);                                         // 토큰 대상자 : 사용자 아이디
+        payload.put("exp", exp);                                            // 토큰 유효기간
 
 
         // 토큰 생성
@@ -89,7 +86,6 @@ public class TokenManagement {
 
 
 
-
     // access token 검증
     public boolean accessTokenVerify(String accessToken) {
         Map<String, Object> jwtClaimMap;
@@ -101,12 +97,9 @@ public class TokenManagement {
                     .parseClaimsJws(accessToken)
                     .getBody();
 
-
             //토큰으로부터 정보 추출
             String issuer = (String)jwtClaimMap.get("iss");                 // access token 발급자 추출
             String subject = (String)jwtClaimMap.get("sub");                // acess token 용도 추출
-
-
 
             // 토큰 검증 로직 시작
             return ((issuer.equals(issue)) && (subject.equals("accessToken")));
@@ -117,9 +110,9 @@ public class TokenManagement {
 
 
 
-
     // refresh token 에서
-    public boolean refreshTokenVerify(String refreshToken) {
+    public boolean refreshTokenVerify(String refreshToken)
+    {
         Map<String, Object> jwtClaimMap;
         try
         {

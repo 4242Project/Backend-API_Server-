@@ -7,13 +7,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.ArrayList;
 
+// 클래스 수강 신청하는 기능의 컨트롤러
 @RestController
 @RequestMapping("")
-public class EnrollClassController {
-
+public class EnrollClassController
+{
     @Autowired
     EnrollClassServiceImpl enrollClassServiceImpl;
 

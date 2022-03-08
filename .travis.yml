@@ -9,6 +9,13 @@ branches:
 chche:
   directories:
     - $HOME/.m2
+
+
+before_install:
+  - chmod +x mvnw
+
+script: "./mvnw clean package"
+
 before_deploy:
   - zip -r flatform42-api-service *
   - mkdir -p deploy

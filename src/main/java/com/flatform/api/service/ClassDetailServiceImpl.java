@@ -8,7 +8,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service("ClassDetailService")
-public class ClassDetailServiceImpl implements ClassDetailService {
+public class ClassDetailServiceImpl implements ClassDetailService
+{
 
     @Autowired
     ClassDetailDAO classDetailDAO;

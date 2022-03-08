@@ -4,9 +4,9 @@ import com.flatform.api.model.dto.AllClassMemberHostDTO;
 import com.flatform.api.service.AllClassMemberHostServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
+//회원히 개설한 클래스 목록을 조회하는 기능의 컨트롤러
 @RestController
 @RequestMapping("")
 public class AllClassMemberHostController
@@ -16,7 +16,7 @@ public class AllClassMemberHostController
 
     @ResponseBody
     @GetMapping(value = "/class/open/{member_id}")
-    public List<AllClassMemberHostDTO> getAllClssesMemberHost(@PathVariable (name="member_id")String member_id)
+    public List<AllClassMemberHostDTO> getAllClassesMemberHost(@PathVariable (name="member_id")String member_id)
     {
         return allClassMemberHostServiceImpl.getAllClassMemberHost(member_id);
     }

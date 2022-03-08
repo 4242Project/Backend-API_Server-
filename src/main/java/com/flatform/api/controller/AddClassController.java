@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+// 클래스를 개설하는 기능의 컨트롤러
 @RestController
 @RequestMapping("")
 public class AddClassController {
@@ -20,7 +21,5 @@ public class AddClassController {
     public String addClassInfo(@RequestBody AddClassDTO addClassDTO)
     {
         return addClassServiceimpl.addNewClass(addClassDTO);
-
     }
-
 }

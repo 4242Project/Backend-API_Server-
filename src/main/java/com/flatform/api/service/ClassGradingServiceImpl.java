@@ -9,13 +9,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service("ClassGradingService")
-public class ClassGradingServiceImpl implements ClassGradingService{
+public class ClassGradingServiceImpl implements ClassGradingService
+{
     @Autowired
     ClassGradingDAO classGradingDAO;
 
     @Override
-    public String classGradingService(ClassGradingDTO classGradingDTO) {
-        //ClassGradingDTO로부터 새로운 점수(사이값)(클라이언트에서 지정한 값) 가져온 후 소수점으로 재연산 해서 재설정
+    public String classGradingService(ClassGradingDTO classGradingDTO)
+    {
+        //ClassGradingDTO 로부터 새로운 점수(사이값)(클라이언트에서 지정한 값) 가져온 후 소수점으로 재연산 해서 재설정
         Double gradeVal = (classGradingDTO.getSai_change())*(0.1);
 
         //ClassGradingDTO 로부터 대상 클래스 ID 가져오기

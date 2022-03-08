@@ -8,7 +8,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service("AllClassMemberHostService")
-public class AllClassMemberHostServiceImpl implements AllClassMemberHostService{
+public class AllClassMemberHostServiceImpl implements AllClassMemberHostService
+{
 
     @Autowired
     AllClassMemberHostDAO allClassMemberHostDAO;

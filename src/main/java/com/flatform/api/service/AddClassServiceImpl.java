@@ -5,15 +5,16 @@ import com.flatform.api.model.dto.AddClassDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service("AddclassService")
-public class AddClassServiceImpl implements AddclassService{
+@Service("AddClassService")
+public class AddClassServiceImpl implements AddClassService
+{
     @Autowired
     AddClassDAO addClassDAO;
 
     @Override
     public String addNewClass(AddClassDTO addClassDTO)
     {
-        // 새로운 클래스ID 생성
+        // 새로운 클래스 ID 생성
         String[] cidStd = (addClassDAO.getClassIdStd()).split("");
         int cIdStdInt = 0;
         cIdStdInt += (Integer.parseInt(cidStd[1]))*1000;

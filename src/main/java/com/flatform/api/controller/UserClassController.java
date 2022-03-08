@@ -4,23 +4,23 @@ import com.flatform.api.model.dto.UserClassDTO;
 import com.flatform.api.service.UserClassServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Calendar;
 
+// 회원이 오늘 수강하는 클래스를 조회하는 컨트롤러
 @RestController
 @RequestMapping("")
-public class UserClassController {
-
+public class UserClassController
+{
     @Autowired
     UserClassServiceImpl userClassServiceimpl;
 
     @ResponseBody
     @GetMapping(value="/class/member/today/{id}")
-    public List<UserClassDTO> getTodayClasses(@PathVariable(name = "id") String requestedId){
+    public List<UserClassDTO> getTodayClasses(@PathVariable(name = "id") String requestedId)
+    {
         Calendar calendar = Calendar.getInstance();
         System.out.println(calendar.get(Calendar.DAY_OF_WEEK));
         return userClassServiceimpl.getUserTodayClass(requestedId, calendar.get(Calendar.DAY_OF_WEEK));
     }
-
 }

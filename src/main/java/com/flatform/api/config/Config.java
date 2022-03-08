@@ -1,6 +1,6 @@
 package com.flatform.api.config;
 
-import com.flatform.api.Intercepor.AcessInterceptor;
+import com.flatform.api.Intercepor.AccessInterceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
@@ -11,13 +11,12 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
-
 import javax.sql.DataSource;
 
 @Configuration
 @MapperScan(value={"com.**.dao"})
 public class Config implements WebMvcConfigurer {
+
     @Bean
     public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
         SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
@@ -30,7 +29,7 @@ public class Config implements WebMvcConfigurer {
     }
 
     @Autowired
-    AcessInterceptor accessInterceptor;
+    AccessInterceptor accessInterceptor;
 
     @Override
     public void addInterceptors(InterceptorRegistry registry)

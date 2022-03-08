@@ -4,12 +4,11 @@ import com.flatform.api.model.dao.MemberStampNumDAO;
 import com.flatform.api.model.dto.MemberStampNumDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service("MemberStampNumService")
-public class MemberStampNumServiceImpl implements MemberStampNumService{
-
+public class MemberStampNumServiceImpl implements MemberStampNumService
+{
     @Autowired
     MemberStampNumDAO memberStampNumDAO;
 

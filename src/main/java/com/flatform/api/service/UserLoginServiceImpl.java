@@ -1,18 +1,16 @@
 package com.flatform.api.service;
 
-import com.flatform.api.TokenMgmt.TokenManagement;
+import com.flatform.api.security.TokenManagement;
 import com.flatform.api.model.dao.UserLoginDAO;
 import com.flatform.api.model.dto.UserLoginDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.HashMap;
 import java.util.Map;
 
-
 @Service("UserLoginService")
-public class UserLoginServiceImpl implements UserLoginService {
-
+public class UserLoginServiceImpl implements UserLoginService
+{
     @Autowired
     TokenManagement tokenManagement;
 
@@ -20,7 +18,8 @@ public class UserLoginServiceImpl implements UserLoginService {
     UserLoginDAO userLoginDAO;
 
     @Override
-    public Map<String, Object> verifyUser(UserLoginDTO userLoginDTO) {
+    public Map<String, Object> verifyUser(UserLoginDTO userLoginDTO)
+    {
         // login DTO 로부터 ID , PW 추출
         String userIdFromClient = userLoginDTO.getId();
         String userPWFromClient = userLoginDTO.getPw();
@@ -32,19 +31,18 @@ public class UserLoginServiceImpl implements UserLoginService {
         //DB의 id, pw값 비교해서 모두 참이면 리프레시 토큰과 엑세스 토큰 발급
         //일치하지 않으면 에러 반환
         if(((userIdFromClient.equals(userIdFromDB)) && (userPWFromClient.equals(userPWFromDB))))
-        {//access tokwn , refresh token 발급
-            System.out.println("OFOFOFORORORO");
+        {
+            //access tokwn , refresh token 발급
             // 발급받은 access, refresh 토큰 변수에 저장
             String newAccesstoken = tokenManagement.generateAccessToken(userIdFromDB);
             String newRefreshtoken = tokenManagement.generateRefreshToken(userIdFromDB);
-
 
             // 리프레시 토큰 DB에 저장
             HashMap<String, Object> saveRefreshTokenObj = new HashMap<>();
             saveRefreshTokenObj.put("memberid", userIdFromDB);
             saveRefreshTokenObj.put("refreshToken", newRefreshtoken);
 
-            System.out.println(saveRefreshTokenObj);
+            //System.out.println(saveRefreshTokenObj);
 
             userLoginDAO.saveRefreshToken(saveRefreshTokenObj);
 

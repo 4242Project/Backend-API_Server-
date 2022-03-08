@@ -9,7 +9,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service("ClassTakerListService")
-public class ClassTakerListServiceImpl implements ClassTakerListService {
+public class ClassTakerListServiceImpl implements ClassTakerListService
+{
 
     @Autowired
     ClassTakerListDAO classTakerListDAO;
@@ -18,6 +19,5 @@ public class ClassTakerListServiceImpl implements ClassTakerListService {
     public List<ClassTakerListDTO> getClasstakerList(String class_id)
     {
         return classTakerListDAO.getClassTakerListDB(class_id);
-
     }
 }

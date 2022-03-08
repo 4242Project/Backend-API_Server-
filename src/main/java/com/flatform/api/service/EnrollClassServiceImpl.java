@@ -8,7 +8,8 @@ import org.springframework.stereotype.Service;
 
 @Service("EnrollClassService")
 @RequiredArgsConstructor
-public class EnrollClassServiceImpl implements EnrollClassService{
+public class EnrollClassServiceImpl implements EnrollClassService
+{
 
     @Autowired
     EnrollClassDAO enrollClassDAO;
