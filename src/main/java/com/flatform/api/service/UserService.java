@@ -190,12 +190,12 @@ public class UserService
     public Map<String, String> createUser(UserInfoEntity userSignUpEntity)
     {
         //AWS S3 버킷 이름, 주소
-        String endpoint = "s3.ap-northeast-2.amazonaws.com";
-        String bucketName = "media-resource-42flatform";
+        String endpoint = "";
+        String bucketName = "";
 
         //AWS Access Key & Secret Key
-        String accesskey = "AKIAWHO5YRFIHP6CET3X";
-        String secretkey = "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";
+        String accesskey = "";
+        String secretkey = "";
 
         //AWS S3 클라리언트 연결 설정
         AWSCredentials credentials = new BasicAWSCredentials(accesskey, secretkey);
