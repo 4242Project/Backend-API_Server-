@@ -1,7 +1,7 @@
 package com.flatform.api.service;
 
-import com.flatform.api.model.dao.*;
-import com.flatform.api.model.dto.*;
+import com.flatform.api.repository.dao.*;
+import com.flatform.api.repository.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.HashMap;

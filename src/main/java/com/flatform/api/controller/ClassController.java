@@ -1,6 +1,6 @@
 package com.flatform.api.controller;
 
-import com.flatform.api.model.dto.*;
+import com.flatform.api.repository.dto.*;
 
 import com.flatform.api.service.*;
 import org.springframework.beans.factory.annotation.Autowired;

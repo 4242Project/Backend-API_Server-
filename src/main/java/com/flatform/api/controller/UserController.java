@@ -1,9 +1,9 @@
 package com.flatform.api.controller;
 
-import com.flatform.api.model.dto.MemberStampNumDTO;
-import com.flatform.api.model.dto.UserInfoEntity;
-import com.flatform.api.model.dto.UserLoginDTO;
-import com.flatform.api.model.dto.tokenMapping;
+import com.flatform.api.repository.dto.MemberStampNumDTO;
+import com.flatform.api.repository.dto.UserInfoEntity;
+import com.flatform.api.repository.dto.UserLoginDTO;
+import com.flatform.api.repository.dto.tokenMapping;
 import com.flatform.api.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
