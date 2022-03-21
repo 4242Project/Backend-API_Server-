@@ -3,8 +3,12 @@ package com.flatform.api.security;
 
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.Jwts;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
 import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,13 +16,20 @@ import java.util.Map;
 @Component // 클래스를 Bean으로 등록
 public class TokenManagement {
     //비밀키 생성
-    final String secretkey = "eb2a459b7918fd3c0c45387eb7b8c7844e71d111227c146ef75347c33a36d90d";
-    //발급자 정보
+    @Value("${jwt.password}")
+    private String secretkey;
+
     final String issue = "42API";
     // access token 만료시간 간격 4시간
     Long ACCESS_TOKEN_EXP_TIME = 1000 * 60L * 60L * 4L;
     // refresh token 만료시간 간격 2주
     Long REFRESH_TOKEN_EXP_TIME = (1000 * 60L * 60L * 24L)*14L;
+
+    @PostConstruct
+    protected void init(){
+        secretkey = Base64.getEncoder().encodeToString(secretkey.getBytes());
+    }
+
 
     // Acess Token 생성
     public String generateAccessToken(String userId)
@@ -30,7 +41,6 @@ public class TokenManagement {
 
         //payload 설정
         Map<String, Object> payload = new HashMap<>();
-
         Date exp = new Date();                                              // access token 의 유효기간 설정
         exp.setTime(exp.getTime() + ACCESS_TOKEN_EXP_TIME);
 
@@ -105,12 +115,15 @@ public class TokenManagement {
             return ((issuer.equals(issue)) && (subject.equals("accessToken")));
         }
         // refresh token 만료 및 그외 에러시
-        catch ( Exception e) { return false; }
+        catch(Exception e)
+        {
+            return false;
+        }
     }
 
 
 
-    // refresh token 에서
+    // refresh token 검증
     public boolean refreshTokenVerify(String refreshToken)
     {
         Map<String, Object> jwtClaimMap;
